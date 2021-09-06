@@ -37,7 +37,7 @@ class CasearCodeBreaker:
         return df_merged
 
     def _get_avg_occurences_counts(self, df):
-        df.iloc[:, [1]] *= len(self._input_string)
+        df.iloc[:, [1]] *= len(self._input_string) / 100 # divided by 100 cause on Wikipedia it's in percents
         return df
 
     def _compute_square_dif_for_every_rotations(self, original, averaged):
