@@ -4,7 +4,7 @@ CasearCodeBreaker is a Python class that automatically decrypts given text based
 
 The decryption process consists of these steps:
 - count occurences of each letter in given text,
-- compare these counted frequencies with those found in [Wikipedia](https://en.wikipedia.org/wiki/Letter_frequency#Relative_frequencies_of_letters_in_other_languages),
+- compare these counted frequencies with those specified in `frequencies.csv`,
 - find the alphabet shift in Casear cipher that minimizes the difference
 - shift all letters in the given text back to decrypt it.
 
