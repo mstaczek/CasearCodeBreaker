@@ -10,7 +10,7 @@ The decryption process consists of these steps:
 
 ### Usage  
 Argument 'path_to_file' is optional. Default path is 'message.txt' (meaning a file located in your current directory).
-> python CasearCodeBreaker.py [path_to_file]
+>\> python CasearCodeBreaker.py [path_to_file]
 
 ### The longer the text, the better.
 
