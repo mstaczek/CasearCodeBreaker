@@ -1,3 +1,5 @@
+import pathlib
+
 import numpy as np
 import pandas as pd
 import re
@@ -9,14 +11,18 @@ class CasearCodeBreaker:
     """
     This class can decrypt text encrypted with Casear Cipher using letter frequencies.
     """
-    _path_to_frequencies_csv = 'frequencies.csv'
-
+    _path_to_frequencies_csv = None
+    _NAME_OF_FILE_WITH_FREQUENCIES = 'frequencies.csv'
     ALPHABET_EN = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     ALPHABET_PL = 'AĄBCĆDEĘFGHIJKLŁMNŃOÓPRSŚTUWYZŹŻ'
     _selected_alphabet = ALPHABET_PL
     _selected_language = 'Polish'
     _input_string = None
     _clean_string = None
+
+    def __init__(self):
+        path_to_dir_with_script = pathlib.Path(__file__).parent.resolve()
+        self._path_to_frequencies_csv = path_to_dir_with_script / self._NAME_OF_FILE_WITH_FREQUENCIES
 
     def _read_txt(self, path, encoding='utf8'):
         self._input_string = open(path, "r", encoding=encoding).read().upper()
@@ -112,10 +118,10 @@ Usage:
 > python CasearCodeBreaker.py [path_to_encrypted_txt]
 
 If no path is specified, the script will look for a file named 'message.txt' located
-in the same directory as the script.
+in the current (in terminal) directory.
 """
 if __name__ == '__main__':
-    path_to_encrypted_message = sys.argv[1:] if len(sys.argv) > 1 else 'message.txt'
+    path_to_encrypted_message = sys.argv[1] if len(sys.argv) > 1 else 'message.txt'
 
     decryptor = CasearCodeBreaker()
     decryptor.set_language('Polish')
